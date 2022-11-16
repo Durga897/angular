@@ -1,0 +1,60 @@
+<mat-toolbar color="primary">
+    <!-- <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+     <mat-icon>menu</mat-icon>
+   </button> -->
+   <span>MYCart</span>
+   <span class="spacer"></span>
+   <a 
+   *ngIf="!isLoggedIn"
+   [routerLink]="'/login'"
+     mat-icon-button class="example-icon favorite-icon" 
+     aria-label="Example icon-button with heart icon">
+    Login
+   </a>
+   <a 
+   *ngIf="!isLoggedIn"
+   [routerLink]="'/signup'"
+     mat-icon-button class="example-icon " 
+     style=" margin-right: 20px;  margin-left: 20px;" 
+     aria-label="Example icon-button with share icon">
+    Register
+   </a>
+   <a 
+   *ngIf="!isLoggedIn"
+   [routerLink]="'/sellerSignup'" 
+     mat-icon-button class="example-icon " 
+     style=" margin-right: 50px;  margin-left: 10px;" 
+     aria-label="Example icon-button with share icon">
+    Become Seller
+   </a>
+   <form class="form-inline ml-auto" method="get"  *ngIf="isLoggedIn">
+    <input class="form-control mr-sm-2" type="search" placeholder="Search" name="product" id="product"
+           aria-label="Search">
+    <button mat-raised-button color="primary" (click)="findProduct();"  type="button"><mat-icon mat-list-icon>search</mat-icon></button>
+</form>
+<button *ngIf="isLoggedIn && isSeller()" mat-button> {{loginService.getUser().username}}</button>
+
+<button *ngIf="isLoggedIn && isCustomer()" mat-button [matMenuTriggerFor]="menu"> {{loginService.getUser().username}}</button>
+<mat-menu #menu="matMenu">
+  <button mat-menu-item [routerLink]="['/customer-home']" > <mat-icon mat-list-icon>home</mat-icon>Home</button>
+  <button mat-menu-item [routerLink]="['/customer-profile']"><mat-icon mat-list-icon>account_circle</mat-icon>My Profile</button>
+  <button mat-menu-item [routerLink]="['/orders']" > <mat-icon mat-list-icon>payment</mat-icon>Orders</button>
+  <button mat-menu-item><mat-icon mat-list-icon>logout</mat-icon>Logout</button>
+</mat-menu>
+    <a 
+    *ngIf="isLoggedIn && isCustomer()"
+    [routerLink]="'/cart'" 
+      mat-icon-button class="example-icon " 
+      style=" margin-right: 50px;  margin-left: 10px;" 
+      aria-label="Example icon-button with share icon">
+      <mat-icon mat-list-icon>shopping_cart</mat-icon>
+     </a>
+     <a 
+     *ngIf="isLoggedIn"
+     (click)="logout()"
+       mat-icon-button class="example-icon " 
+       style=" margin-right: 50px;  margin-left: 10px;" 
+       aria-label="Example icon-button with share icon">
+       Logout<mat-icon mat-list-icon>power_settings_new</mat-icon>
+     </a>
+ </mat-toolbar>

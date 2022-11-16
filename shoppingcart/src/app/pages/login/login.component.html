@@ -1,0 +1,26 @@
+<div class="bootstrap-wrapper" style="margin-top: 40px;">
+    <div class="container">
+         <div class="row">
+            <div class="col-md-6 offset-md-3" >
+            <mat-card>
+              <form #signIn="ngForm"  (ngSubmit)="login(signIn)">
+                  <h1 class="text-center"><b>Login</b></h1>
+                  <mat-form-field class="full-width" appearance="outline">
+                     <mat-label>Username</mat-label>
+                     <input  [(ngModel)]="loginData.username" name="username" matInput placeholder="Enter here">
+                   </mat-form-field>
+                    <mat-form-field class="full-width" appearance="outline">
+                      <mat-label>Password</mat-label>
+                      <input [(ngModel)]="loginData.password" name="password" type="password" matInput placeholder="Enter here">
+                    </mat-form-field>
+                    <div class="container text-center">
+                        <button  type="submit" mat-raised-button  color="primary">Login</button>
+                        <button style="margin-left:20px;" mat-raised-button color="accent">Clear</button>
+                      </div>
+               </form>
+               </mat-card>
+            </div>
+          </div>
+    </div>
+  </div>
+  

@@ -1,0 +1,58 @@
+<div class="bootstrap-wrapper" style="margin-top: 20px;">
+    <div class="container">
+         <div class="row">
+            <div class="col-md-6 offset-md-3" >
+              <!-- [formGroup]="userForm" -->
+              <!-- {{user | json}} -->
+              <mat-card>
+                <form  #products="ngForm"  (ngSubmit)="formSubmit(products)"  enctype="multipart/form-data">
+                    <h1 style="text-align:center ;"><b>Add Product</b></h1>
+                    <mat-form-field class="full-width" appearance="outline">
+                        <mat-label>name</mat-label>
+                        <input [(ngModel)]="product.name" name="name" matInput placeholder="Enter here" required>
+                      </mat-form-field>
+    
+                      <mat-form-field class="full-width" appearance="outline">
+                        <mat-label>color</mat-label>
+                        <input [(ngModel)]="product.color" name="color"  matInput placeholder="Enter here" required>
+                      </mat-form-field>
+    
+                      <mat-form-field class="full-width" appearance="outline">
+                        <mat-label>description</mat-label>
+                        <input [(ngModel)]="product.description" name="description"  matInput placeholder="Enter here" required>
+                      </mat-form-field>
+    
+                      <mat-form-field class="full-width" appearance="outline">
+                        <mat-label>stock</mat-label>
+                        <input [(ngModel)]="product.stock" name="stock"  type="text" matInput placeholder="Enter here" required>
+                      </mat-form-field>
+                      <mat-form-field class="full-width" appearance="outline">
+                        <mat-label>Price</mat-label>
+                        <input [(ngModel)]="product.price" name="phone" type="number" matInput placeholder="Enter here" required>
+                      </mat-form-field>
+                      <mat-form-field>
+                          <mat-toolbar>
+                            <input matInput  readonly name="image" />
+                              </mat-toolbar>
+                          <input
+                            type="file"
+                            #fileInput
+                            id="uploadFile"
+                            multiple="multiple"
+                            accept="image/*"
+                            name="image"
+                            (change)="onFileChanged($event)"
+                          />
+                    
+                      </mat-form-field>
+                      <div class="container">
+                        <button type="submit"  mat-raised-button color="primary">ADD</button>
+                        <button style="margin-left:20px;" mat-raised-button color="accent">Clear</button>
+                      </div>
+                 </form>
+                 </mat-card>
+            </div>
+          </div>
+    </div>
+  </div>
+  

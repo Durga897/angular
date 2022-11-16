@@ -1,0 +1,37 @@
+<mat-card>
+    <h3>Your Profile Details</h3>
+    <mat-card-content>
+        <div class="bootstrap-wrapper">
+          <div class="container">
+            <div class="container text-center">
+              <img src="https://t3.ftcdn.net/jpg/03/46/83/96/360_F_346839683_6nAPzbhpSkIpb8pmAwufkC7c5eD7wYws.jpg" class="profile-image">    
+              <h1 class="mt20">{{user.firstName}} {{user.lastName}}</h1>  
+            </div>
+            <div class="row">
+                <div class="col-md-10 offset-md-1">
+                    <table class="table text-center">
+                        <tr>
+                        <td>Username</td>
+                        <td>{{user.username}}</td>    
+                        </tr>
+                        <tr>
+                            <td>Address</td>
+                            <td>{{user.address}}</td>    
+                            </tr>
+                            <tr>
+                                <td>Phone</td>
+                                <td>{{user.phone}}</td>    
+                                </tr>
+                            
+                        </table>
+             
+            </div>
+            </div>  
+            </div>    
+        </div>
+           </mat-card-content>
+    <mat-card-actions class="text-center">
+        <button mat-raised-button color="primary"  routerLink="/edit-profiles">EDIT</button>
+        <button mat-raised-button color="accent">CANCLE</button>
+    </mat-card-actions>
+    </mat-card>

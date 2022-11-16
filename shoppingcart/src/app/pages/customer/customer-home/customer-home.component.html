@@ -1,0 +1,35 @@
+<div class="row">
+  <div class="col-md-2">
+  </div>
+  <div class="col-md-8">
+      <div class="row ">
+          <div class="col-md-3" *ngFor="let product of products">
+                      <div class="card">
+                          <a (click)="getProductById(product.id)">
+                              <img class="card-img-top" src="http://localhost:8080/product/getProductImage/{{product.id}}"></a>
+                          <div class="card-body">
+                              <p class="card-title"><b>{{product.name}}</b></p>
+                              <p class="card-text" id="description">{{product.description}}</p>
+                          </div>
+                          <div class="card-footer text-center">
+                              <a href="#" class="btn btn-outline-info"><b>&#8377;{{product.price}}</b></a>
+                          </div>
+                      </div>
+          </div>
+      </div>
+  </div>
+</div>
+
+
+  <!-- <div class="row">
+    <div class="col-md-4" *ngFor="let product of products">
+      <div class="card">
+        <img src="https://www.askmea2z.com/inventory_images/401.jpg" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">${{product.name}}</h5>
+          <p class="card-text">${{product.description}}</p>
+          <a href="#" class="btn btn-primary">${{product.price}}</a>
+        </div>
+      </div>
+    </div>
+  </div> -->

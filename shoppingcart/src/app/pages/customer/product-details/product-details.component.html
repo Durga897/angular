@@ -1,0 +1,32 @@
+
+<mat-card>
+<div class="row mt-3 mx-2">
+    <div class="col-md-5">
+        <div class="card">
+            <img class="card-img-top" src="http://localhost:8080/product/getProductImage/{{product.id}}">
+            <div class="card-footer" style="margin-left: 50px">
+               
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4" style="margin-top: 60px;" >
+        <div class="row">
+            <div class="card">
+                <div class="card-body">
+                    <p class="card-title" style="font-size: 20px;"><b>{{product.name}}</b>  </p>
+                    <p class="card-text" style="font-size: 15px;">Color: {{product.color}}</p>
+                    <p class="card-text" style="font-size: 15px;">Price:</p>
+                    <p class="card-text" style="font-size: 15px;"><b>&#8377;{{product.price}}</b></p>
+                    <p class="card-text" style="font-size: 15px;">Description:</p>
+                    <p class="card-text" style="font-size: 15px;">{{product.description}}</p>
+                     <p class="card-text" style="font-size: 15px;color: rgb(0, 183, 255);"><b>Delivery by {{getDeliveryDate() |  date:'dd LLLL yyyy' }}</b></p><br>
+                        <button type="button" class="btn btn-light btn-lg" id="add" (click)="addToCarts(product.id)"><b>ADD TO CART</b></button>
+                  
+                        <button type="button" id="buy" class="btn btn-light btn-lg" (click)="getProductById(product.id)"><b>BUY NOW</b></button>
+              
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</mat-card>

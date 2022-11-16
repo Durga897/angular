@@ -1,0 +1,87 @@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+<div class="center" *ngIf="!cartItems?.length">
+    <img src="https://static-assets-web.flixcart.com/www/linchpin/fk-cp-zion/img/emptyOrders_f13d28.png" alt="empty">
+    <p><b>Your cart is empty!</b></p>
+    <button mat-raised-button color="primary" routerLink="/customer-home">ShopContinue</button>
+      </div>
+<div class="row mt-5 mx-2" *ngIf="cartItems?.length">
+    <div class="col-md-6">
+        <div class="card" >
+            <div class="card-header">
+                <h5 class="card-title"><b>My Cart</b></h5>
+            </div>
+            <div *ngFor="let cartItem of cartItems,let i = index">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <img class="card-img-top" src="http://localhost:8080/product/getProductImage/{{cartItem.product.id}}"
+                                 style="width:90px;height:90px">
+                        </div>
+                        <div class="col-md-9">
+                            <p class="card-title"><b>{{cartItem.product.name}} </b><b style="margin-left: 30px;color: rgb(19, 82, 107);">Delivery by {{getDeliveryDate() |  date:'dd LLLL yyyy' }}</b></p>  
+                            <p class="card-title"><b>{{cartItem.product.color}}</b></p>
+                            <a (click)='removeCartItem(cartItem.id)' href="cart"><b>REMOVE</b></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="quantity">         
+                                <a href="cart">
+                                <button class="btn minus-btn" type="button"
+                                (click)='decreaseCartItemQuantity(cartItem.product.id)'  onclick="this.parentNode.querySelector('input[type=number]').stepDown()">-
+                                    </button>
+                                </a>
+                                <input type="number" id="quantity" value="{{cartItem.quantity}}" min="1"
+                                       style="width: 40px;">
+                                    <a href="cart">
+                                    <button class="btn plus-btn" type="button"
+                                    (click)='increaseCartItemQuantity(cartItem.product.id)' onclick="this.parentNode.querySelector('input[type=number]').stepUp()">+
+                                    </button>
+                                    </a>
+                              
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <a href="#" class="btn btn-outline-info" style="font-size: 15px"><b>&#8377;{{cartItem.price}}</b></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer text-right">
+         
+                <button type="button" class="btn btn-light btn-lg" id="order" routerLink="/checkout"><b>&nbsp;&nbsp;PLACE ORDER &nbsp;&nbsp;  </b></button>
+           
+            </div>
+        </div>
+    </div>
+    <div class="col-md-5 overflow-hidden">
+        <div class="card">
+            <div class="card-header">
+                <p class="card-title"><b>Price Details</b></p>
+            </div>
+            <div class="card-body">
+                <div class="d-flex justify-content-between mb-4">
+                    <p class="card-title">Price({{cartTotalItem}})</p>
+                    <h5>&#8377;{{cartTotal}} </h5>
+                </div>
+                <div class="d-flex justify-content-between mb-4">
+                    <p class="card-text">Discount</p>
+                    <h5 style="color: green">&#8377; 0.00</h5>
+                </div>
+                <div class="d-flex justify-content-between mb-4">
+                    <p class="card-text">Delivery Charges</p>
+                    <h5 style="color: green">&#8377; 0.00</h5>
+                </div>
+            </div>
+            <div class="card-footer text-center">
+                <div class="d-flex justify-content-between mb-4">
+                    <p class="card-text"><b>TotalAmount</b></p>
+                    <h5><b>&#8377;{{cartTotal}} </b></h5>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    

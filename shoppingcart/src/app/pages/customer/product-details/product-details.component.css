@@ -1,0 +1,16 @@
+.card-img-top {
+    height: 300px;
+    margin-left: auto;
+}
+
+#buy{
+    margin-left: 30px; 
+    background-color:#fb641b;
+     color:#FFFFFF; 
+     font-size: 15px
+}
+#add{
+    background-color:#ff9f00; 
+    color:#FFFFFF; 
+    font-size: 15px
+}
