@@ -14,13 +14,14 @@ intercept(
       req: HttpRequest<any>, 
       next: HttpHandler
       ): Observable<HttpEvent<any>> {
-              
-        let token ='eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJEdXJnYTEyMyIsImV4cCI6MTY2ODE5OTcwNCwiaWF0IjoxNjY4MTYzNzA0fQ.Ui7tRIPixSp5iJnCxHHCziUBGqUvxtrtoaMGCs-7QSg';
-        console.log(token);
-        console.log("inside innterceptor")
-          let authReq= req.clone({setHeaders:{Authorization:'Bearer '+ token}});
-      return next.handle(authReq);
+             
+        let authReq = req;
+        const token=this.loginService.getToken();
+        if(token!=null){
+          authReq=authReq.clone({
+            setHeaders:{Authorization:'Bearer '+ token}
+          });
+        }       
+        return next.handle(authReq);   
     }
 }
-
-
